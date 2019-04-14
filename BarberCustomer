@@ -8,7 +8,7 @@
 #include <semaphore.h>  
 #define MAX_CUST 15 
 void *cust(void *num); 
-void *barber(void *); 
+void *barber(void *);
 void randwait(int secs); 
 sem_t waiting_Room; 
 sem_t barber_Chair; 
@@ -24,18 +24,18 @@ int main(int argc, char *argv[])
     printf("Enter No. of Customers : ");
 	scanf("%d",&x);
     nCust= x;
-    printf("-----------------------------------------------------------------------------------\n");
+    printf("--------------------------------------------------------------------------------------------------------\n");
     printf("Enter No. of Chairs : ");
     scanf("%d",&x);
     nChair = x;
-    printf("-----------------------------------------------------------------------------------\n");
+    printf("---------------------------------------------------------------------------------------------------------\n");
 	if (nCust>MAX_CUST) { 
        printf("The maximum number of Customers is %d.\n", MAX_CUST); 
        system("PAUSE");    
        return 0;
     } 
     printf("SOLUTION.\n");
-	printf("-----------------------------------------------------------------------------------\n"); 
+	printf("------------------------------------------------------------------------------------------------------\n"); 
     for (i = 0; i < MAX_CUST; i++) { 
         Num[i] = i; 
     } 
