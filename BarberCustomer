@@ -8,7 +8,7 @@
 #include <semaphore.h>  
 #define MAX_CUST 15 
 void *cust(void *num); 
-void *barber(void *);
+void *barber(void *); 
 void randwait(int secs); 
 sem_t waiting_Room; 
 sem_t barber_Chair; 
@@ -22,20 +22,18 @@ int main(int argc, char *argv[])
     int i, x, nCust,nChair; int Num[MAX_CUST]; 
     printf("Maximum number of customers can only be 15.\n");
     printf("Enter No. of Customers : ");
-	scanf("%d",&x);
-    nCust= x;
-    printf("--------------------------------------------------------------------------------------------------------\n");
+	scanf("%d",&nCust);
+    printf("-----------------------------------------------------------------------------------\n");
     printf("Enter No. of Chairs : ");
-    scanf("%d",&x);
-    nChair = x;
-    printf("---------------------------------------------------------------------------------------------------------\n");
+    scanf("%d",&nChair);
+    printf("-----------------------------------------------------------------------------------\n");
 	if (nCust>MAX_CUST) { 
        printf("The maximum number of Customers is %d.\n", MAX_CUST); 
        system("PAUSE");    
        return 0;
     } 
     printf("SOLUTION.\n");
-	printf("------------------------------------------------------------------------------------------------------\n"); 
+	printf("-----------------------------------------------------------------------------------\n"); 
     for (i = 0; i < MAX_CUST; i++) { 
         Num[i] = i; 
     } 
@@ -71,21 +69,24 @@ void *cust(void *number) {
      sem_post(&barber_Chair); 
      printf("Customer %d leaving barber shop.\n", num); 
 } 
-void randwait(int secs) { 
-     int len = 1;
-     sleep(len); 
-}
 void *barber(void *junk) 
 { 
-  while (!allDone){  
+  while (!allDone) {  
     printf("Barber :- Sleeping\n"); 
     sem_wait(&barber_Sleep); 
-    if (!allDone){ 
+    if (!allDone) 
+    { 
      printf("Barber :- Cutting hair\n"); 
      randwait(3);
      printf("Barber :- Finished cutting hair.\n"); 
      sem_post(&seat_Belt); 
     } 
-    else{ 
+    else { 
          printf("Barber :- Going home.\n"); 
-}}}
+    } 
+   }
+}
+void randwait(int secs) { 
+     int len = 1;
+     sleep(len); 
+}
